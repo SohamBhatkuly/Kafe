@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, Image, Pressable, Modal } from 'react-native';
+import { View, Text, Image, Pressable, Modal, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
 const MenuItems = ({ items }) => {
@@ -19,23 +19,32 @@ const MenuItems = ({ items }) => {
   return (
     <View>
       {items.length > 0 ? (
-        <FlatList
-          data={items}
-          renderItem={({ item }) => (
-            <Pressable onPress={() => openModal(item)} className="bg-black items-center my-5 flex-row">
-              <Image source={item.image} className="w-40 h-40 self-start mr-3" />
-              <View>
-                <Text className="text-white">{item.name}</Text>
-                <Text className="text-white">{item.price}</Text>
-                <View className="flex-row items-center">
-                  <Text className="text-white mr-1">{item.rating}</Text>
-                  <FontAwesome name="star" size={16} color="yellow" />
+        <ScrollView>
+          {items.map((item) => (
+            <Pressable
+              key={item.id}
+              onPress={() => openModal(item)}
+              className="bg-black flex-row items-center my-2 p-2"
+            >
+              <Image
+                source={item.image}
+                className="w-40 h-40 mr-3"
+              />
+           <View>
+      <Text className="text-white text-lg">{item.name}</Text>
+      <Text className="text-white">{item.price}</Text>
+      <View className="flex-row items-center">
+        <Text className="text-white mr-1">{item.rating}</Text>
+        <FontAwesome name="star" size={16} color="yellow" />
                 </View>
-              </View>
-            </Pressable>
-          )}
-          keyExtractor={(item) => item.id.toString()}
+                   <Image
+          source={item.isVeg ? require('../(menudependencies)/menuimgs/veg1.png') : require('../(menudependencies)/menuimgs/nonveg1.webp')}
+          className="w-4 h-4"
         />
+    </View>
+            </Pressable>
+          ))}
+        </ScrollView>
       ) : (
         <Text className="text-white">No items found</Text>
       )}
@@ -47,15 +56,19 @@ const MenuItems = ({ items }) => {
           transparent={true}
           onRequestClose={closeModal}
         >
-          <View className="flex-1 justify-center items-center bg-black bg-opacity-50">
-            <View className="bg-white p-10 rounded-lg w-[90%] h-[90%] justify-start items-center">
-              <Text className="text-lg font-bold">{selectedItem.name}</Text>
-              <Image source={selectedItem.image} className="w-40 h-40 mt-5 mb-5" />
+          <View className="flex-1 bg-black bg-opacity-100">
+            <View className="bg-white p-5 w-full h-full ">
+              
+              <Image
+                source={selectedItem.image}
+                className="w-[100%] h-[50%] my-4"
+              />
+              <Text className="text-xl  font-bold">{selectedItem.name}</Text>
+              <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, animi fugiat magnam totam, corporis earum dolorum quae, libero vitae ipsam quibusdam et voluptate molestiae ea? Quas possimus consectetur delectus. Eum?</Text>
               <Text>{selectedItem.description}</Text>
-              <Text className="mt-3">Price: {selectedItem.price}</Text>
-              <Text>Rating: {selectedItem.rating}</Text>
-              <Pressable onPress={closeModal} className="absolute top-2 left-2 p-2 border-1 border-red-300 rounded">
-                <Text className="text-lg color-main">X</Text>
+              <Text className="mt-1">Ingredient:{selectedItem.ingredient}</Text>
+              <Pressable onPress={closeModal} className="absolute top-2 left-2 p-2 border border-red-300 rounded">
+                <Text className="text-lg text-red-500">X</Text>
               </Pressable>
             </View>
           </View>

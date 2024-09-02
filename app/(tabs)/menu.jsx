@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Categories from '../(menudependencies)/Categories'; 
 import MenuItems from '../(menudependencies)/menuitems';
@@ -62,8 +62,8 @@ const Menu = () => {
   };
 
   const images = [
-    require('../(menudependencies)/menuimgs/latte.jpeg'), // Adjust the path
-    require('../(menudependencies)/menuimgs/muffins.jpg'), // Adjust the path
+    require('../(menudependencies)/menuimgs/coffeeroasted(2).jpg'), // Adjust the pathcoffeeroasted(2)
+    require('../(menudependencies)/menuimgs/burger2.jpg'), // Adjust the path
     // Add more images as needed
   ];
 
@@ -75,7 +75,9 @@ const Menu = () => {
         contentContainerStyle={{ paddingBottom: 20 }}
       >
         <SlidingImages images={images} />
-        
+        <View className="color-main pl-5 fs-5">
+          <Text className="color-main text-lg">What's on your mind?</Text>
+        </View>
         <Categories scrollToSection={scrollToSection} />
 
         {/* Filter Buttons here */}
@@ -83,7 +85,7 @@ const Menu = () => {
 
         {/* Render Menu Items by Category */}
         {uniqueCategories.map(category => (
-          <View key={category} ref={sectionRefs[category]}>
+          <View  className="pl-3"key={category} ref={sectionRefs[category]}>
             <MenuItems items={filteredItems.filter(item => item.type === category)} />
           </View>
         ))}

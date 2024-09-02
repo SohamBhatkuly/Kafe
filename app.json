@@ -7,7 +7,6 @@
     "icon": "./assets/images/icon.png",
     "scheme": "kafe",
     "userInterfaceStyle": "automatic",
-    
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.kafe.cafeteria"
@@ -25,7 +24,8 @@
       "expo-router",
       "@react-native-firebase/auth",
       "@react-native-firebase/app",
-      "@react-native-firebase/crashlytics"
+      "@react-native-firebase/crashlytics",
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true

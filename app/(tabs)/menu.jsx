@@ -5,18 +5,18 @@ import Categories from '../(menudependencies)/Categories';
 import MenuItems from '../(menudependencies)/menuitems';
 import { items } from '../(menudependencies)/menuindex';
 import SlidingImages from '../(menudependencies)/slidingimages';
-import FilterButtons from '../(menudependencies)/filterbuttons'; // Move FilterButtons here
+import FilterButtons from '../(menudependencies)/filterbuttons';
 
 const Menu = () => {
   const scrollViewRef = useRef(null);
 
-  // Create references for each unique category section
+  
   const sectionRefs = items.reduce((acc, item) => {
     if (!acc[item.type]) acc[item.type] = React.createRef();
     return acc;
   }, {});
 
-  // Scroll to the section when a category button is clicked
+
   const scrollToSection = (type) => {
     const sectionRef = sectionRefs[type];
     if (sectionRef?.current) {
@@ -29,42 +29,47 @@ const Menu = () => {
     }
   };
 
-  // Get unique categories
+ 
   const uniqueCategories = [...new Set(items.map(item => item.type))];
 
-  // State for managing filtered items
+ 
   const [filteredItems, setFilteredItems] = useState(items);
   const [filterApplied, setFilterApplied] = useState(false);
 
-  const filterByPrice = () => {
-    if (!filterApplied) {
-      const sortedItems = [...items].sort((a, b) => a.price - b.price);
-      setFilteredItems(sortedItems);
-      setFilterApplied(true);
-    } else {
-      resetFilters(); // Reset items when filter is clicked again
-    }
-  };
+const filterByPrice = () => {
+  console.log("Filter by Price clicked");
+  if (!filterApplied) {
+    const sortedItems = [...items].sort((a, b) => a.price - b.price);
+    setFilteredItems(sortedItems);
+    setFilterApplied(true);
+  } else {
+    
+    resetFilters();
+  }
+};
 
-  const filterByRating = () => {
-    if (!filterApplied) {
-      const sortedItems = [...items].sort((a, b) => b.rating - a.rating);
-      setFilteredItems(sortedItems);
-      setFilterApplied(true);
-    } else {
-      resetFilters(); // Reset items when filter is clicked again
-    }
-  };
+const filterByRating = () => {
+  console.log("Filter by Rating clicked");
+  if (!filterApplied) {
+    const sortedItems = [...items].sort((a, b) => b.rating - a.rating);
+    setFilteredItems(sortedItems);
+    setFilterApplied(true);
+  } else {
+   
+    resetFilters();
+  }
+};
 
-  const resetFilters = () => {
-    setFilteredItems(items); // Reset to original items
-    setFilterApplied(false);
-  };
+const resetFilters = () => {
+  console.log("Reset Filters");
+  setFilteredItems(items);
+  setFilterApplied(false);
+};
+
 
   const images = [
-    require('../(menudependencies)/menuimgs/coffeeroasted(2).jpg'), // Adjust the pathcoffeeroasted(2)
-    require('../(menudependencies)/menuimgs/burger2.jpg'), // Adjust the path
-    // Add more images as needed
+    require('../(menudependencies)/menuimgs/coffeeroasted(2).jpg'),
+    require('../(menudependencies)/menuimgs/burger2.jpg'),
   ];
 
   return (
@@ -80,16 +85,15 @@ const Menu = () => {
         </View>
         <Categories scrollToSection={scrollToSection} />
 
-        {/* Filter Buttons here */}
+        
         <FilterButtons filterByPrice={filterByPrice} filterByRating={filterByRating} />
 
-        {/* Render Menu Items by Category */}
+      
         {uniqueCategories.map(category => (
-          <View  className="pl-3"key={category} ref={sectionRefs[category]}>
+          <View className="pl-3" key={category} ref={sectionRefs[category]}>
             <MenuItems items={filteredItems.filter(item => item.type === category)} />
           </View>
         ))}
-
       </ScrollView>
     </SafeAreaView>
   );

@@ -9,18 +9,18 @@ const SlidingImages = ({ images }) => {
   const translateXAnim = useRef(new Animated.Value(0)).current;
 
   const { width } = Dimensions.get('window');
-  const imageWidth = Math.min(700, width * 0.9); // Image width max 200 or 50% of screen width
-  const imageHeight = (imageWidth / 400) * 200; // Maintain 200x300 aspect ratio
+  const imageWidth = Math.min(700, width * 0.9); 
+  const imageHeight = (imageWidth / 400) * 200;
 
   useEffect(() => {
     const interval = setInterval(() => {
       Animated.timing(translateXAnim, {
-        toValue: -imageWidth, // Slide by the image width
+        toValue: -imageWidth, 
         duration: 500,
         useNativeDriver: true,
       }).start(() => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        translateXAnim.setValue(imageWidth); // Reset position
+        translateXAnim.setValue(imageWidth); 
         Animated.timing(translateXAnim, {
           toValue: 0,
           duration: 500,

@@ -30,9 +30,10 @@ export const items = [
     desciption: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, animi fugiat magnam totam, corporis earum dolorum quae, libero vitae ipsam quibusdam et voluptate molestiae ea? Quas possimus consectetur delectus. E",
     rating: "4.2",
     ingredient:"Milk, sugar, coffee, cream",
-    price: "50₹",
+    price: "30₹",
     type: 'Drinks',
     isVeg: true,
+    extras: ['Extra Cheese', 'Extra Sauce', 'Bacon'],
   },
   {
     id: "2",
@@ -42,6 +43,7 @@ export const items = [
     price: "50₹",
     type: 'Drinks',
     isVeg: true,
+    extras: ['Extra Cheese', 'Extra Sauce', 'Bacon'],
   },
   {
     id: "3",
@@ -51,6 +53,7 @@ export const items = [
     price: "30₹",
     type: 'Drinks',
     isVeg: true,
+    extras: ['Extra Cheese', 'Extra Sauce', 'Bacon'],
   },
   {
     id: "4",
@@ -60,6 +63,7 @@ export const items = [
     price: "40₹",
     type: 'Drinks',
     isVeg: true,
+    extras: ['Extra Cheese', 'Extra Sauce', 'Bacon'],
   },
   {
     id: "5",
@@ -69,6 +73,7 @@ export const items = [
     price: "50₹",
     type: 'Drinks',
     isVeg: true,
+    extras: ['Extra Cheese', 'Extra Sauce', 'Bacon'],
   },
  
 
@@ -80,6 +85,7 @@ export const items = [
     price: "50₹",
     type: 'Snacks',
     isVeg: false,
+    extras: ['Extra Cheese', 'Extra Sauce', 'Bacon'],
   },
   {
     id: "7",
@@ -89,6 +95,7 @@ export const items = [
     price: "65₹",
     type: 'Snacks',
     isVeg: true,
+    extras: ['Extra Cheese', 'Extra Sauce', 'Bacon'],
   },
   {
     id: "8",
@@ -98,6 +105,7 @@ export const items = [
     price: "60₹",
     type: 'Snacks',
     isVeg: true,
+    extras: ['Extra Cheese', 'Extra Sauce', 'Bacon'],
   },
   {
     id: "9",
@@ -107,6 +115,7 @@ export const items = [
     price: "70₹",
     type: 'Snacks',
     isVeg: false,
+    extras: ['Extra Cheese', 'Extra Sauce', 'Bacon'],
   },
     {
     id: "10",
@@ -115,7 +124,8 @@ export const items = [
     rating: "4.8",
     price: "90₹",
     type: 'Snacks',
-    isVeg: false,
+      isVeg: false,
+    extras: ['Extra Cheese', 'Extra Sauce', 'Bacon'],
   },
   
     {
@@ -125,7 +135,8 @@ export const items = [
     rating: "4.7",
     price: "70₹",
       type: 'Desserts',
-    isVeg: true,
+      isVeg: true,
+    extras: ['Extra Cheese', 'Extra Sauce', 'Bacon'],
   },
     {
     id: "12",

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Pressable, Text } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons'; // Ensure FontAwesome is imported
+import { FontAwesome } from '@expo/vector-icons'; 
 
 const FilterButtons = ({ filterByPrice, filterByRating }) => {
   const [pressedButton, setPressedButton] = useState(null);
